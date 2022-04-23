@@ -1,0 +1,13 @@
+.popup__close-button {
+  position: fixed;
+  background-color: black;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  z-index: 55;
+  align-self: flex-end;
+}
+
+.popup__close-button:hover {
+    opacity: 80%;
+}

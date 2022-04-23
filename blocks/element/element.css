@@ -1,0 +1,10 @@
+.element {
+    background-image: url(../../images/rectangle.png);
+    background-repeat: no-repeat;
+    max-width: 282px; 
+    display: flex;
+    flex-direction: column;
+    border-radius: 5%;
+    overflow: hidden;
+    margin: 0 auto;
+}

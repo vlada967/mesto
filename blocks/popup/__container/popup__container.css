@@ -1,0 +1,12 @@
+.popup__container {
+    display: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; 
+    flex-direction: column;
+    width: 470px;
+    position: fixed;
+    height: 370px;
+}
