@@ -1,7 +1,7 @@
 .popup__form {
     width: 430px;
     background: #FFFFFF;
-    border-radius: 10px;   
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     height: 330px;
