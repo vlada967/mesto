@@ -6,7 +6,13 @@
     right: 0;
     margin: auto;
     flex-direction: column;
-    width: 470px;
+    max-width: 470px;
     position: fixed;
     height: 370px;
+}
+
+@media screen and (max-width: 709px) {
+    .popup__container {
+        padding: 0 19px;
+    }
 }
