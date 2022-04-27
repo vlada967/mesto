@@ -11,25 +11,24 @@
 
     <header class="header">
         <img src="images/header-logo.svg" alt="Логотип место" class="header__logo">
-        <img src="images/line.png" alt="Серая горизонтальная линия" class="header__line">
     </header>
 
     <main class="content">
         <section class="profile">
             <div class="profile__person">
-            <img src="images/avatar.svg" alt="Человек" class="profile__avatar">
+            <img src="images/avatar.svg" alt="Аватар пользователя" class="profile__avatar">
             <div class="profile__info">
                 <div class="profile__container">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button type = "button" class="profile__edit-button">
-                        <img src="images/edit-button.svg" alt="" class="profile__edit-button-img">
+                        <img src="images/edit-button.svg" alt="Карандаш" class="profile__edit-button-image">
                     </button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p> 
             </div>
             </div>
-            <button class="profile__add-button">
-                <img src="images/add.svg" alt="">
+            <button type = "button" class="profile__add-button">
+                <img src="images/add.svg" alt="Плюс" class = "profile__add-button-image">
             </button>
         </section>    
 
@@ -37,48 +36,48 @@
             <div class="element">
                 <img src="images/karachaevsk.png" alt="Старинный замок в лесу" class="element__image">
                 <div class="element__info">
-                    <p class="element__subtitle">Карачаевск</p>
-                    <button class="element__like"></button>
+                    <h2 class="element__subtitle">Карачаевск</h2>
+                    <button type = "button" class="element__like"></button>
                 </div>
             </div>
 
             <div class="element">
                 <img src="images/elbrus.png" alt="Лес и гора Эльбрус" class="element__image">
                 <div class="element__info">
-                    <p class="element__subtitle">Гора Эльбрус</p>
-                    <button class="element__like"></button>
+                    <h2 class="element__subtitle">Гора Эльбрус</h2>
+                    <button type = "button" class="element__like"></button>
                 </div>
             </div>
 
             <div class="element">
                 <img src="images/dombay.png" alt="Закат" class="element__image">
                 <div class="element__info">
-                    <p class="element__subtitle">Домбай</p>
-                    <button class="element__like"></button>
+                    <h2 class="element__subtitle">Домбай</h2>
+                    <button type = "button" class="element__like"></button>
                 </div>
             </div>
 
             <div class="element">
                 <img src="images/elbrus.png" alt="Лес и гора Эльбрус" class="element__image">
                 <div class="element__info">
-                    <p class="element__subtitle">Гора Эльбрус</p>
-                    <button class="element__like"></button>
+                    <h2 class="element__subtitle">Гора Эльбрус</h2>
+                    <button type = "button" class="element__like"></button>
                 </div>
             </div>
 
             <div class="element">
                 <img src="images/dombay.png" alt="Закат" class="element__image">
                 <div class="element__info">
-                    <p class="element__subtitle">Домбай</p>
-                    <button class="element__like"></button>
+                    <h2 class="element__subtitle">Домбай</h2>
+                    <button type = "button" class="element__like"></button>
                 </div>
             </div>
 
             <div class="element">
                 <img src="images/karachaevsk.png" alt="Старинный замок в лесу" class="element__image">
                 <div class="element__info">
-                    <p class="element__subtitle">Карачаево-Черкессия</p>
-                    <button class="element__like"></button>
+                    <h2 class="element__subtitle">Карачаево-Черкессия</h2>
+                    <button type = "button" class="element__like"></button>
                 </div>
             </div>
 
@@ -86,22 +85,22 @@
     </main>
 
     <footer class="footer">
-        <img src="images/footer-logo.svg" alt="Логотип место" class="footer__logo">
+        <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
 
     <div class="popup">
         <div class = "popup__container">
-        <button class="popup__close-button">                        
+        <button type = "button" class="popup__close-button">                        
         </button>
-        <form class="popup__form">     
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" class="popup__text popup__text_type_name">
-            <input type="text" class="popup__text popup__text_type_job">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form name = "form" class="popup__form">
+            <input type="text" name = "popup__name" class="popup__text popup__text_type_name">
+            <input type="text" name = "popup__job" class="popup__text popup__text_type_job">
             <button type = "submit" class="popup__save-button">Сохранить</button>
         </form>
     </div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>
