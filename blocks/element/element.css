@@ -1,6 +1,5 @@
 .element {
-    background-image: url(../../images/rectangle.png);
-    background-repeat: no-repeat;
+    background-color: #ffffff;
     max-width: 282px;
     display: flex;
     flex-direction: column;
