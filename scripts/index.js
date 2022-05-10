@@ -71,12 +71,12 @@ function handleSubmitAddForm(evt) {
     cards.prepend(newCard);
 
     closePopup(popupBackgroundAddCard);
+
+    popupName.value = name.textContent;
+    popupJob.value = job.textContent;
 }
 
 function openPopup(popup) {
-    popupName.value = name.textContent;
-    popupJob.value = job.textContent;
-
     popup.classList.toggle('popup_opened');
 }
 
@@ -88,6 +88,9 @@ initialCards.forEach(function(el) {
     const newCard = createCard(el.name, el.link);
     cards.prepend(newCard);
 });
+
+popupName.value = name.textContent;
+popupJob.value = job.textContent;
 
 popupElementEditProfile.addEventListener('submit', handleSubmitEditProfile);
 popupElementAddCard.addEventListener('submit', handleSubmitAddForm);
