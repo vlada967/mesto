@@ -15,6 +15,7 @@ const buttonCloseImage = document.querySelector('.popup__close-button_type_image
 
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
+const buttonCreate = document.querySelector('.popup__create-button');
 
 const name = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
@@ -71,17 +72,32 @@ function handleSubmitAddForm(evt) {
     cards.prepend(newCard);
 
     closePopup(popupBackgroundAddCard);
+    makeAddButtonDisabled();
 
     popupName.value = name.textContent;
     popupJob.value = job.textContent;
 }
 
+function makeAddButtonDisabled() {
+    buttonCreate.classList.add('popup__button-disabled');
+    buttonCreate.setAttribute("disabled", "disabled");
+  }
+
 function openPopup(popup) {
-    popup.classList.toggle('popup_opened');
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEscape);
 }
 
 function closePopup(popup) {
-    popup.classList.toggle('popup_opened');
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupByEscape);
+}
+
+function closePopupByEscape(evt) {
+    if (evt.key == 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
 }
 
 initialCards.forEach(function(el) {
@@ -101,3 +117,19 @@ buttonAdd.addEventListener('click', () => openPopup(popupBackgroundAddCard));
 buttonCloseEditProfile.addEventListener('click', () => closePopup(popupBackgroundEditProfile));
 buttonCloseAddCard.addEventListener('click', () => closePopup(popupBackgroundAddCard));
 buttonCloseImage.addEventListener('click', () => closePopup(popupImage));
+
+popupBackgroundEditProfile.addEventListener('click', function (evt) {
+    if (evt.target == evt.currentTarget) {
+        closePopup(popupBackgroundEditProfile);
+    }
+});
+popupBackgroundAddCard.addEventListener('click', function (evt) {
+    if (evt.target == evt.currentTarget) {
+        closePopup(popupBackgroundAddCard);
+    }
+});
+popupImage.addEventListener('click', function (evt) {
+    if (evt.target == evt.currentTarget) {
+        closePopup(popupImage);
+    }
+});
