@@ -59,11 +59,13 @@ function handleSubmitEditProfile(evt) {
     job.textContent = popupJob.value;
 
     closePopup(popupBackgroundEditProfile);
+
+    popupName.value = name.textContent;
+    popupJob.value = job.textContent;
 }
 
 function handleSubmitAddForm(evt) {
     evt.preventDefault();
-    evt.target.reset();
 
     const title = evt.target.popup__title.value;
     const link = evt.target.popup__link.value;
@@ -74,8 +76,8 @@ function handleSubmitAddForm(evt) {
     closePopup(popupBackgroundAddCard);
     makeAddButtonDisabled();
 
-    popupName.value = name.textContent;
-    popupJob.value = job.textContent;
+    evt.target.popup__title.value = '';
+    evt.target.popup__link.value = '';
 }
 
 function makeAddButtonDisabled() {
