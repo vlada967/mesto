@@ -59,9 +59,6 @@ function handleSubmitEditProfile(evt) {
     job.textContent = popupJob.value;
 
     closePopup(popupBackgroundEditProfile);
-
-    popupName.value = name.textContent;
-    popupJob.value = job.textContent;
 }
 
 function handleSubmitAddForm(evt) {
@@ -102,6 +99,13 @@ function closePopupByEscape(evt) {
     }
 }
 
+function closePopupByOverlay(evt) { 
+    if (evt.target == evt.currentTarget) {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+
 initialCards.forEach(function(el) {
     const newCard = createCard(el.name, el.link);
     cards.prepend(newCard);
@@ -113,25 +117,17 @@ popupJob.value = job.textContent;
 popupElementEditProfile.addEventListener('submit', handleSubmitEditProfile);
 popupElementAddCard.addEventListener('submit', handleSubmitAddForm);
 
-buttonEdit.addEventListener('click', () => openPopup(popupBackgroundEditProfile));
+buttonEdit.addEventListener('click', function() {
+    popupName.value = name.textContent;
+    popupJob.value = job.textContent;
+    openPopup(popupBackgroundEditProfile);
+}); 
 buttonAdd.addEventListener('click', () => openPopup(popupBackgroundAddCard));
 
 buttonCloseEditProfile.addEventListener('click', () => closePopup(popupBackgroundEditProfile));
 buttonCloseAddCard.addEventListener('click', () => closePopup(popupBackgroundAddCard));
 buttonCloseImage.addEventListener('click', () => closePopup(popupImage));
 
-popupBackgroundEditProfile.addEventListener('click', function (evt) {
-    if (evt.target == evt.currentTarget) {
-        closePopup(popupBackgroundEditProfile);
-    }
-});
-popupBackgroundAddCard.addEventListener('click', function (evt) {
-    if (evt.target == evt.currentTarget) {
-        closePopup(popupBackgroundAddCard);
-    }
-});
-popupImage.addEventListener('click', function (evt) {
-    if (evt.target == evt.currentTarget) {
-        closePopup(popupImage);
-    }
-});
+popupBackgroundEditProfile.addEventListener('click', closePopupByOverlay);
+popupBackgroundAddCard.addEventListener('click', closePopupByOverlay);
+popupImage.addEventListener('click', closePopupByOverlay);
