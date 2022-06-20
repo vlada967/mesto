@@ -1,3 +1,7 @@
+import {initialCards, config} from './data.js';
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
+
 const popupBackgroundEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupBackgroundAddCard = document.querySelector('.popup_type_add-card');
 const popupImage = document.querySelector('.popup_type_image');
@@ -23,34 +27,7 @@ const job = document.querySelector('.profile__subtitle');
 const template = document.querySelector('.elements__template');
 const cards = document.querySelector('.elements');
 
-function createCard (name, link) {
-    const newCard = template.content.cloneNode(true);
-    const likeElement = newCard.querySelector('.element__like');
-    const deleteElement = newCard.querySelector('.element__delete');
-    const imageElement = newCard.querySelector('.element__image');
-
-    newCard.querySelector('.element__subtitle').textContent = name;
-    imageElement.src = link;
-    imageElement.alt = name;
-
-    likeElement.addEventListener('click', function() {
-        likeElement.classList.toggle("element__like_active");
-    });
-
-    deleteElement.addEventListener('click', function(evt) {
-        evt.target.closest(".element").remove();
-    });
-
-    imageElement.addEventListener('click', function() {
-        popupCaption.textContent = name;
-        popupLink.src = link;
-        popupLink.alt = name;
-
-        openPopup(popupImage);
-    });
-
-    return newCard;
-}
+const formList = Array.from(document.querySelectorAll('.popup__form'));
 
 function handleSubmitEditProfile(evt) {
     evt.preventDefault();
@@ -67,7 +44,8 @@ function handleSubmitAddForm(evt) {
     const title = evt.target.popup__title.value;
     const link = evt.target.popup__link.value;
 
-    const newCard = createCard(title, link);
+    const сardElement = new Card(title, link, '.elements__template', openImagePopup);
+    const newCard = сardElement.createCard();
     cards.prepend(newCard);
 
     closePopup(popupBackgroundAddCard);
@@ -85,6 +63,14 @@ function makeAddButtonDisabled() {
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupByEscape);
+}
+
+function openImagePopup(link, name) {
+        popupCaption.textContent = name;
+        popupLink.src = link;
+        popupLink.alt = name;
+    
+        openPopup(popupImage);
 }
 
 function closePopup(popup) {
@@ -107,12 +93,21 @@ function closePopupByOverlay(evt) {
 }
 
 initialCards.forEach(function(el) {
-    const newCard = createCard(el.name, el.link);
+    const сardElement = new Card(el.name, el.link, '.elements__template', openImagePopup);
+    const newCard = сardElement.createCard();
     cards.prepend(newCard);
 });
 
 popupName.value = name.textContent;
 popupJob.value = job.textContent;
+
+formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+    });
+    const FormValidatorElement = new FormValidator(config, formElement);
+    FormValidatorElement.enableValidation();
+});
 
 popupElementEditProfile.addEventListener('submit', handleSubmitEditProfile);
 popupElementAddCard.addEventListener('submit', handleSubmitAddForm);
