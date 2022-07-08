@@ -32,3 +32,8 @@ export const config = {
   inputErrorClass: 'popup__input-error',
   errorClass: 'popup__error'
 }; 
+
+export const profileConfig = {
+  nameSelector: '.profile__title', 
+  infoSelector: '.profile__subtitle'
+};

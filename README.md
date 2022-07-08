@@ -5,5 +5,5 @@
 [Проект на Github Pages](https://vlada967.github.io/mesto/)
 
 ## Технологии
-Данный проект написан с использованием HTML5 и CSS 
+Данный проект написан с использованием HTML56, CSS и JavaScript 
 

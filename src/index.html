@@ -3,32 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
     <title>Место</title>
 </head>
 
 <body class = "root">
 
     <header class="header">
-        <img src="images/header-logo.svg" alt="Логотип место" class="header__logo">
+        <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип место" class="header__logo">
     </header>
 
     <main class="content">
         <section class="profile">
             <div class="profile__person">
-            <img src="images/avatar.svg" alt="Аватар пользователя" class="profile__avatar">
+            <img src="<%=require('./images/avatar.svg')%>" alt="Аватар пользователя" class="profile__avatar">
             <div class="profile__info">
                 <div class="profile__container">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button type = "button" class="profile__edit-button">
-                        <img src="images/edit-button.svg" alt="Карандаш" class="profile__edit-button-image">
+                        <img src="<%=require('./images/edit-button.svg')%>" alt="Карандаш" class="profile__edit-button-image">
                     </button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p> 
             </div>
             </div>
             <button type = "button" class="profile__add-button">
-                <img src="images/add.svg" alt="Плюс" class = "profile__add-button-image">
+                <img src="<%=require('./images/add.svg')%>" alt="Плюс" class = "profile__add-button-image">
             </button>
         </section>    
 
@@ -36,9 +35,9 @@
             <template class="elements__template">
                 <div class="element">
                     <button type = "button" class="element__delete">
-                        <img src="images/delete-icon.svg" alt="Иконка удаления" class="element__delete-icon">
+                        <img src="<%=require('./images/delete-icon.svg')%>" alt="Иконка удаления" class="element__delete-icon">
                     </button>             
-                    <img src="images/karachaevsk.png" alt="Старинный замок в лесу" class="element__image">
+                    <img src="<%=require('./images/karachaevsk.png')%>" alt="Старинный замок в лесу" class="element__image">
                     <div class="element__info">
                         <h2 class="element__subtitle">Карачаевск</h2>
                         <button type = "button" class="element__like"></button>
@@ -90,7 +89,5 @@
             <p class="popup__caption">Байкал</p>
         </div>       
     </div>
-
-    <script type = "module" src="scripts/index.js"></script> 
 </body>
 </html>
