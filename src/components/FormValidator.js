@@ -6,21 +6,24 @@ class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._form = form;
+
+    this._inputList = Array.from(this._form.querySelectorAll(`.${this._inputSelector}`));
+    this._buttonElement = this._form.querySelector(`.${this._submitButtonSelector}`);
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     })
   }
 
-  _toggleButtonState(inputList, buttonElement) {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(this._inactiveButtonClass);
-      buttonElement.setAttribute("disabled", "disabled");
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.setAttribute("disabled", "disabled");
     } else {
-      buttonElement.classList.remove(this._inactiveButtonClass);
-      buttonElement.removeAttribute("disabled", "disabled");
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.removeAttribute("disabled", "disabled");
     }
   }
 
@@ -46,17 +49,22 @@ class FormValidator {
     }
   }
 
-  _setEventListeners() {
-    const inputList = Array.from(this._form.querySelectorAll(`.${this._inputSelector}`));
-    const buttonElement = this._form.querySelector(`.${this._submitButtonSelector}`);
+  _setEventListeners() { 
+    this._toggleButtonState();
   
-    this._toggleButtonState(inputList, buttonElement);
-  
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState();
       });
+    });
+  }
+
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement)
     });
   }
 

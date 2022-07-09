@@ -17,7 +17,7 @@ class Popup {
         }
     }
 
-    open = () => {
+    open() {
         this._popup.classList.add('popup_opened');
         document.addEventListener('keydown', this._handleEscClose);
     }
@@ -29,7 +29,7 @@ class Popup {
 
     setEventListeners() {
         this._closeButton.addEventListener('click', this.close);
-        this._popup.addEventListener('click', this._closePopupByOverlay);
+        this._popup.addEventListener('mousedown', this._closePopupByOverlay);
     }    
 }
 

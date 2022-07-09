@@ -10,13 +10,9 @@ class UserInfo {
         return {name: this._name, info: this._info};
     }
 
-    setUserInfo(name, info) {     
-        // console.log('1');
-        // console.log(this._name.textContent);
+    setUserInfo(name, job) {   
         this._name.textContent = name;
-        this._info.textContent = info;
-        // console.log('2');
-        // console.log(this._name);
+        this._info.textContent = job;
     }
 }
 
