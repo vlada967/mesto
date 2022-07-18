@@ -4,6 +4,7 @@ class PopupWithForm extends Popup {
     constructor(popupSelector, handleSubmitForm) {
         super(popupSelector);
         this._handleSubmitForm = handleSubmitForm;
+        this._submitButton = this._popup.querySelector('.popup__submit');
         this._formElement = this._popup.querySelector('.popup__form');
         this._inputs = Array.from(this._formElement.querySelectorAll('.popup__text'));
     }
@@ -18,9 +19,13 @@ class PopupWithForm extends Popup {
 
     _handleSubmit = (evt) => {
         evt.preventDefault();
-        this._handleSubmitForm(this._getInputValues());
+        this._handleSubmitForm(this._getInputValues(), this.changeButtonText);
         this.close();
         evt.target.reset();
+    }
+
+    changeButtonText = (isSaving) => {
+        this._submitButton.textContent = isSaving ? 'Сохранение...' : 'Сохранить';
     }
 
     setEventListeners() {
