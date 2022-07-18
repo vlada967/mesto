@@ -29,7 +29,8 @@ function handleSubmitEditProfile(data, changeButtonCaption) {
     changeButtonCaption(true);
     api.editProfile(data.popup__name, data.popup__job)
     .then((res) => {
-        user.setUserInfo(res.name, res.about, res.avatar);
+        user.setUserInfo(res.name, res.about, res._id);
+        editProfilePopup.close();
     })
     .catch((err) => {
         console.log(err);
@@ -43,7 +44,8 @@ function handleSubmitEditAvatar(data, changeButtonCaption) {
     changeButtonCaption(true);
     api.editAvatar(data.popup__link)
     .then((res) => {
-        avatar.src = res.avatar;
+        user.setAvatar(res.avatar);
+        editAvatarPopup.close();
     })
     .catch((err) => {
         console.log(err);
@@ -58,6 +60,7 @@ function handleSubmitAddForm(data, changeButtonCaption) {
     api.addCard(data.popup__title, data.popup__link)
     .then((res) => {
         cardsContainer.addItem(res);
+        addCardPopup.close();
     })
     .catch((err) => {
         console.log(err);
@@ -132,17 +135,12 @@ const api = new Api({
     }
 });
 
-api.getProfileInfo()
-    .then((res) => {
-        userId = res._id;
-        user.setUserInfo(res.name, res.about, res.avatar, res._id);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+Promise.all([api.getProfileInfo(), api.getInitialCards()])
+    .then(([userData, cards]) => {
+        userId = userData._id;
+        user.setAvatar(userData.avatar);
+        user.setUserInfo(userData.name, userData.about, userData._id);
 
-api.getInitialCards()
-    .then((cards) => {
         cardsContainer.renderAll(cards);
     })
     .catch((err) => {

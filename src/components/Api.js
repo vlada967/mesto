@@ -17,9 +17,6 @@ class Api {
             headers: this._headers
         })
             .then((response) => this._checkResponse(response))
-            .catch((err) => {
-                console.log(err);
-            })
     }
   
     getInitialCards() {
@@ -28,9 +25,6 @@ class Api {
             headers: this._headers
         })
             .then((response) => this._checkResponse(response))
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
     editProfile(name, job) {
@@ -43,9 +37,6 @@ class Api {
               })
         })
             .then((response) => this._checkResponse(response))
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
     addCard(name, link) {
@@ -58,9 +49,6 @@ class Api {
               })
         })
             .then((response) => this._checkResponse(response))
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
     deleteCard(id) {
@@ -69,9 +57,6 @@ class Api {
             headers: this._headers
         })
             .then((response) => this._checkResponse(response))
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
     toggleLike(id, isLiked) {
@@ -80,9 +65,6 @@ class Api {
             headers: this._headers
         })
             .then((response) => this._checkResponse(response))
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
     editAvatar(link) {
@@ -94,9 +76,6 @@ class Api {
               })
         })
             .then((response) => this._checkResponse(response))
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
 }

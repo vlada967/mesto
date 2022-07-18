@@ -20,8 +20,6 @@ class PopupWithForm extends Popup {
     _handleSubmit = (evt) => {
         evt.preventDefault();
         this._handleSubmitForm(this._getInputValues(), this.changeButtonText);
-        this.close();
-        evt.target.reset();
     }
 
     changeButtonText = (isSaving) => {

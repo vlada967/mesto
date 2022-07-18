@@ -13,10 +13,13 @@ class UserInfo {
         return {name: this._name, info: this._info};
     }
 
-    setUserInfo(name, job, avatar, id) {   
+    setAvatar(avatar) {
+        this._avatar.src = avatar;
+    }
+
+    setUserInfo(name, job, id) {   
         this._name.textContent = name;
         this._info.textContent = job;
-        this._avatar.src = avatar;
         this._id = id;
     }
 }
