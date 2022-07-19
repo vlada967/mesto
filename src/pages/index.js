@@ -1,5 +1,5 @@
 import './index.css';
-import {config, profileConfig} from '../components/data.js';
+import {config, profileConfig} from '../utils/data.js';
 import FormValidator from '../components/FormValidator.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
@@ -80,6 +80,7 @@ function deleteCard() {
     api.deleteCard(cardId)
     .then(() => {
         cardElement.remove();
+        confirmDeletePopup.close();
     })
     .catch((err) => {
         console.log(err);
@@ -117,7 +118,7 @@ formList.forEach((formElement) => {
     const formName = formElement.getAttribute('name');
     formValidators[formName] = formValidatorElement;
 
-    formValidatorElement.enableValidation(formList);
+    formValidatorElement.enableValidation();
 });
 
 const user = new UserInfo(profileConfig);

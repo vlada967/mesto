@@ -5,6 +5,7 @@ class PopupWithForm extends Popup {
         super(popupSelector);
         this._handleSubmitForm = handleSubmitForm;
         this._submitButton = this._popup.querySelector('.popup__submit');
+        this._submitBtnText = this._submitButton.textContent
         this._formElement = this._popup.querySelector('.popup__form');
         this._inputs = Array.from(this._formElement.querySelectorAll('.popup__text'));
     }
@@ -23,7 +24,7 @@ class PopupWithForm extends Popup {
     }
 
     changeButtonText = (isSaving) => {
-        this._submitButton.textContent = isSaving ? 'Сохранение...' : 'Сохранить';
+        this._submitButton.textContent = isSaving ? 'Сохранение...' : this._submitBtnText;
     }
 
     setEventListeners() {

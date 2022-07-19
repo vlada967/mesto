@@ -66,7 +66,6 @@ class Card {
         } else {
             this._isCardLiked = true;
         }
-        this._renderLikes();
         this._likeCard(this._cardId, this._isCardLiked, this.setLikes);
     }
 

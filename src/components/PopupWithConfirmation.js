@@ -10,7 +10,6 @@ class PopupWithConfirmation extends Popup {
     _handleClose = (evt) => {
         evt.preventDefault();
         this._handleDeleteCard();
-        this.close();
     }
 
     setEventListeners() {
